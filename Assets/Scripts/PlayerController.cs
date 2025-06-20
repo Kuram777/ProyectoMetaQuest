@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float z = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        Vector3 movement = Vector3.right * x + Vector3.forward * z;
+
+        Vector3 movement = transform.right * x + transform.forward * z;
         characterController.Move(movement);
     }
     void CameraMovement()
@@ -31,6 +32,6 @@ public class PlayerController : MonoBehaviour
         xRotation = xRotation - yMouse;
         xRotation = Mathf.Clamp(xRotation, -77f, 90f);
         CameraPostion.localRotation = Quaternion.Euler(xRotation,0,0);
-        transform.Rotate(Vector3.up * xMouse);
+        this.transform.Rotate(Vector3.up * xMouse);
     }
 }
